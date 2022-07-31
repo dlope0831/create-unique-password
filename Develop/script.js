@@ -3,16 +3,17 @@ const allLower = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p
 const allNum = [1,2,3,4,5,6,7,8,9,10];
 const allSpecial = ["!","#","$","%","&","*","+"];
 
-var howManyCharacters = parseInt(prompt("How many characters"));
-var uppercaseYN = confirm("Do you want uppercase?");
-var lowercaseYN = confirm("Do you want lowercase?");
-var numbersYN = confirm("Do you want numbers?");
-var specialYN = confirm("Do you want special character?");
-
 var generatedPassword = [];
 var allPossibleCharacters = [];
+var stringPassword = "";
 
-function generatedPassword(){
+function generatePassword() {
+
+  var howManyCharacters = parseInt(prompt("How many characters"));
+  var uppercaseYN = confirm("Do you want uppercase?");
+  var lowercaseYN = confirm("Do you want lowercase?");
+  var numbersYN = confirm("Do you want numbers?");
+  var specialYN = confirm("Do you want special character?");
 
 if (uppercaseYN){
     allPossibleCharacters = allPossibleCharacters.concat(allUpper);
@@ -35,22 +36,16 @@ for (var i = 0; i < howManyCharacters; i++){
 
     generatedPassword.push(allPossibleCharacters[randomNum]);
 
+stringPassword = generatedPassword.join("");
+  }
 };
 
-// We use join to turn the array into a string
-// Whatevers in the join() is what is between the parts of the array
-// So like, if we did ["a","b","z"].join("***"), it would give you "a***b***z"
-// We put nothing in there so it combines without separating: "abz"
-var stringPassword = generatedPassword.join("");
-// function stringPassword() {
-//     console.log(stringPassword);
-// }
-};
 var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
-  var password = stringPassword();
+  generatePassword();
+  var password = stringPassword;
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
