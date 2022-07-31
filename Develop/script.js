@@ -1,36 +1,57 @@
-// need a password function
-GIVEN I need a new, secure password 
-WHEN I click the button to generate a password
-THEN I am presented with a series of prompts for password criteria
-WHEN prompted for password criteria
-THEN I select which criteria to include in the password
-WHEN prompted for the length of the password
-THEN I choose a length of at least 8 characters and no more than 128 characters
-WHEN asked for character types to include in the password
-THEN I confirm whether or not to include lowercase, uppercase, numeric, and/or special characters
-WHEN I answer each prompt
-THEN my input should be validated and at least one character type should be selected
-WHEN all prompts are answered
-THEN a password is generated that matches the selected criteria
-WHEN the password is generated
-THEN the password is either displayed in an alert or written to the page
-
-
-
 // Assignment code here
+// element.addEventListener("click", generatedPassword);
+// // console.log (generatedPassword);
+// target.addEventListener(event, stringPassword, usecapture);
 
 
-// Get references to the #generate element
-var generateBtn = document.querySelector("#generate");
+const allUpper =["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+const allLower = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+const allNum = [1,2,3,4,5,6,7,8,9,10];
+const allSpecial = ["!","#","$","%","&","*","+"];
 
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+var howManyCharacters = parseInt(prompt("How many characters"));
+var uppercaseYN = confirm("Do you want uppercase?");
+var lowercaseYN = confirm("Do you want lowercase?");
+var numbersYN = confirm("Do you want numbers?");
+var specialYN = confirm("Do you want special character?");
 
-  passwordText.value = password;
+// console.log(howManyCharacters, uppercaseYN, lowercaseYN, numbersYN,specialcharactersYN );
 
+// Used for the password
+var generatedPassword = [];
+
+// Used to contain all characters that the password might have
+var allPossibleCharacters = [];
+
+// If the user wanted uppercase
+if (uppercaseYN){
+    allPossibleCharacters = allPossibleCharacters.concat(allUpper);
 }
 
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+if (lowercaseYN){
+    allPossibleCharacters = allPossibleCharacters.concat(allLower);
+}
+
+if (numbersYN){
+    allPossibleCharacters = allPossibleCharacters.concat(allNum);
+}
+if (specialYN){
+  allPossibleCharacters = allPossibleCharacters.concat(allSpecial);
+}
+
+console.log(allPossibleCharacters);
+
+// This is where we actually go and get the characters for the password
+for (var i = 0; i < howManyCharacters; i++){
+    let randomNum = Math.floor(Math.random() * allPossibleCharacters.length);
+
+    generatedPassword.push(allPossibleCharacters[randomNum]);
+}
+
+// We use join to turn the array into a string
+// Whatevers in the join() is what is between the parts of the array
+// So like, if we did ["a","b","z"].join("***"), it would give you "a***b***z"
+// We put nothing in there so it combines without separating: "abz"
+var stringPassword = generatedPassword.join("");
+
+console.log(stringPassword);
