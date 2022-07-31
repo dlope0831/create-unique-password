@@ -12,6 +12,8 @@ var specialYN = confirm("Do you want special character?");
 var generatedPassword = [];
 var allPossibleCharacters = [];
 
+function generatedPassword(){
+
 if (uppercaseYN){
     allPossibleCharacters = allPossibleCharacters.concat(allUpper);
 }
@@ -40,8 +42,20 @@ for (var i = 0; i < howManyCharacters; i++){
 // So like, if we did ["a","b","z"].join("***"), it would give you "a***b***z"
 // We put nothing in there so it combines without separating: "abz"
 var stringPassword = generatedPassword.join("");
-function stringPassword() {
+// function stringPassword() {
+//     console.log(stringPassword);
+// }
+};
+var generateBtn = document.querySelector("#generate");
+
+// Write password to the #password input
+function writePassword() {
+  var password = stringPassword();
+  var passwordText = document.querySelector("#password");
+
+  passwordText.value = password;
 
 }
 
-console.log(stringPassword);
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
