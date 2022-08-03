@@ -39,13 +39,9 @@ for (var i = 0; i < howManyCharacters; i++){
     
     stringPassword = generatedPassword.join("");          
     if (howManyCharacters.length === maxCharacters);
-    //   if (howManyCharacters.length === minCharacters) {
-    window.alert("Password should have a minimum of 8 characters and shouldn't exceed 128 characters"); 
-   return [expression];
-  // }
+
   }
 };
-// console.log(howManyCharacters);
 
 var generateBtn = document.querySelector("#generate");
 
