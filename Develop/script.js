@@ -36,8 +36,7 @@ for (var i = 0; i < howManyCharacters; i++){
    
     generatedPassword.push(allPossibleCharacters[randomNum]);
     
-    stringPassword = generatedPassword.join("");          
-    if (howManyCharacters.length === maxCharacters);
+    stringPassword = generatedPassword.join("");     
 
   }
 };
