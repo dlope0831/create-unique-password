@@ -6,6 +6,8 @@ const allSpecial = ["!","#","$","%","&","*","+"];
 var generatedPassword = [];
 var allPossibleCharacters = [];
 var stringPassword = "";
+var maxCharacters = 130;
+var minCharacters = 7;
 
 function generatePassword() {
 
@@ -30,13 +32,18 @@ if (specialYN){
   allPossibleCharacters = allPossibleCharacters.concat(allSpecial);
 }
 
-// This is where we actually go and get the characters for the password
 for (var i = 0; i < howManyCharacters; i++){
     let randomNum = Math.floor(Math.random() * allPossibleCharacters.length);
-
+    if (howManyCharacters.length <= maxCharacters) {
+      if (howManyCharacters.length => minCharacters) {
     generatedPassword.push(allPossibleCharacters[randomNum]);
-
-stringPassword = generatedPassword.join("");
+    
+    stringPassword = generatedPassword.join("");          
+}
+else {
+    window.alert("Password should have a minimum of 8 characters and shouldn't exceed 128 characters"); 
+    return [expression];
+  }
   }
 };
 
@@ -44,6 +51,7 @@ var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
+
   generatePassword();
   var password = stringPassword;
   var passwordText = document.querySelector("#password");
@@ -54,3 +62,4 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+}
