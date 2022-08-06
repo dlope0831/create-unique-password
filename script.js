@@ -9,8 +9,12 @@ var stringPassword = "";
 
 
 function generatePassword() {
-
+  generatedPassword = [];
   var howManyCharacters = parseInt(prompt("How many characters"));
+  if (!howManyCharacters ||howManyCharacters < 8 || howManyCharacters > 128){
+    window.alert("Password should have a minimum of 8 characters and shouldn't exceed 128 characters");
+    return;
+  }
   var uppercaseYN = confirm("Do you want uppercase?");
   var lowercaseYN = confirm("Do you want lowercase?");
   var numbersYN = confirm("Do you want numbers?");
